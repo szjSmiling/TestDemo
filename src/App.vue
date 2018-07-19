@@ -43,17 +43,23 @@ export default {
   font-family: "WebRupee";
   src: url("./assets/font/WebRupee.V2.0.ttf");
 }
-
 #app > div {
-  // height: 100%;
+  height: 100%;
 }
-
+.button{
+  cursor: pointer;
+  color:#fff;
+  background: #409EFF;
+  border-radius:3px;
+  // border:1px solid #eee;
+  padding:5px 10px;
+}
 .rs {
   font-family: "WebRupee";
   font-weight: normal;
   margin-right: 0.2rem;
 }
-
+img{vertical-align: top;}
 h1,
 h2 {
   font-weight: normal;
@@ -68,53 +74,5 @@ input,
 select {
   border: none;
   border-radius: 4px;
-}
-
-.mt-range-progress {
-  background-color: #ffad3d !important;
-}
-
-.mint-indicator-text {
-  color: #ffad3d !important;
-  font-size: 0.6rem !important;
-  line-height: 1rem;
-}
-
-.mint-popup {
-  border-radius: 0.4rem;
-}
-
-.mint-indicator {
-  position: fixed;
-  z-index: 20;
-  -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-.mint-radio-input:checked + .mint-radio-core {
-  background-color: #fff !important;
-  border-color: #ccc !important;
-}
-
-.mint-radio-input:checked + .mint-radio-core::after {
-  background-color: #ffa033 !important;
-}
-
-.mint-radiolist,
-.mint-cell-wrapper,
-.mint-radiolist-label {
-  padding: 0 !important;
-}
-
-.mint-radio-label {
-  font-size: 0.52rem;
-}
-
-.swiper-slide {
-  width: 100% !important;
 }
 </style>

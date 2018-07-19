@@ -28,8 +28,8 @@ export default {
 <style lang='less' scoped>
 .header {
   width: 100%;
-  height:100px;
-  line-height:100px;
+  height:50px;
+  line-height:50px;
   position: fixed;
   top: 0;
   z-index: 10;
@@ -39,6 +39,7 @@ export default {
     color: #fff;
   }
   .head-ico {
+    cursor: pointer;
     i {
       padding: 0 0.64rem;
       color: #fff;

@@ -1,10 +1,10 @@
 <template>
 <div id="file">
-  <mt-button class="close" @click="closePDF" size="small" type="primary">
+  <button class="close" @click="closePDF" size="small" type="primary">
     <i class="iconfont icon-close"></i>
-  </mt-button>
+  </button>
   <div id="pdf" ref="PDF" >
-      <canvas id="the-canvas" style="width:100%;height:93.2%;"></canvas>  
+      <canvas id="the-canvas" style="width:60%;height:90%;margin:auto;"></canvas>  
       <div class="foot" v-if='pdfDoc'>  
         <button class='left' v-if="pageNum>=1" @click="onPrevPage">上一页</button>  
         <button class='right' v-if="pageNum<=pdfDoc.numPages" @click="onNextPage">下一页</button>  
