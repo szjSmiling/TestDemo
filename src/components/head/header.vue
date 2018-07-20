@@ -1,72 +1,84 @@
 <template>
-	<div class="header flex space-between" v-if="showHeader">
-		<div class="head-ico flex align-items-center" @click="goback">
-			<slot name="left"></slot>
-		</div>
-		<div class="head-title flex align-items-center">
-			<slot name="title"></slot>
-		</div>
-		<div class="user head-ico flex align-items-center content-end">
-			<slot name="right"></slot>
-		</div>
+	<div id="header">
+		<el-menu :default-active="activeIndex" class="el-menu-demo flex content-center" mode="horizontal" @select="handleSelect">
+      <el-menu-item index="0"><a id="logo" href="www.szjSmiling.com"><img :src='require("../../assets/images/logo.jpg")' alt=""></a></el-menu-item>
+      <el-menu-item index="1">处理中心</el-menu-item>
+      <el-menu-item index="2">消息中心</el-menu-item>
+      <el-menu-item index="3"><a href="javascript:;" target="_blank">订单管理</a></el-menu-item>
+      <el-submenu index="4">
+        <template slot="title">我的工作台</template>
+        <el-menu-item index="2-1">选项1</el-menu-item>
+        <el-menu-item index="2-2">选项2</el-menu-item>
+        <el-menu-item index="2-3">选项3</el-menu-item>
+        <!-- <el-submenu index="2-4">
+          <template slot="title">选项4</template>
+          <el-menu-item index="2-4-1">选项1</el-menu-item>
+          <el-menu-item index="2-4-2">选项2</el-menu-item>
+          <el-menu-item index="2-4-3">选项3</el-menu-item>
+        </el-submenu> -->
+      </el-submenu>
+      <el-menu-item index="5" v-if="music"><i class="bg-music-icon iconfont"  :class='{"icon-pause":music}' @click="playOrPause"></i></el-menu-item>
+      <el-menu-item index="5" v-else><i class="bg-music-icon iconfont"  :class='{"icon-play":!music}' @click="playOrPause"></i></el-menu-item>
+    </el-menu>
 	</div>
 </template>
 <script>
+let audio = document.createElement('audio');
+audio.src = "http://sc1.111ttt.cn/2016/1/11/11/204111410014.mp3";
+audio.addEventListener("canplaythrough", function () {
+  audio.play();
+}, false);
 export default {
   data() {
     return {
-      showHeader: true
+      music:true,
+      activeIndex: '1',
     };
   },
   methods: {
-    goback() {
-      this.$router.go(-1);
+    handleSelect(key, keyPath) {},
+    playOrPause(){
+      this.music = !this.music;
+      if(!this.music){
+        audio.pause();
+      }
     }
   }
 };
 </script>
 <style lang='less' scoped>
-.header {
-  width: 100%;
-  height:50px;
-  line-height:50px;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-  background: #0b9d78;
-  .title {
-    font-size: 0.768rem;
-    color: #fff;
+#header {
+  min-width: 600px;
+  #logo{
+    width:60px;
+    display:inline-block;
+    float: left;
+    position: absolute;
+    left:-55px;
+    z-index: 20;
+    img{
+      width:100%;
+      height: 100%;
+      border-radius:50%;
+    }
   }
-  .head-ico {
+  .el-menu-demo{
+    border:0;
+    li:hover{
+      color:#409EFF;
+    }
+    .is-active{
+      color:#409EFF;
+    }
+    li:first-child,li:last-child{cursor:default;border:0;i{color:#409EFF;}}
+  }
+  .bg-music-icon{
+    position: absolute;
+    right:-50px;
+    z-index: 20;
+    font-size: 25px;
     cursor: pointer;
-    i {
-      padding: 0 0.64rem;
-      color: #fff;
-      display: block;
-      font-size: 1.2rem;
-    }
   }
-  .user {
-    line-height: 100px;
-    i {
-      padding: 0 0.64rem;
-
-      color: #fff;
-    }
-    img {
-      padding: 0.64rem;
-      width: 30px;
-      flex: 0 0 0.5rem;
-      display: block;
-    }
-  }
-  .head-title {
-    font-size: 1.02rem;
-    line-height: 100px;
-    line-height: 100px;
-    color: #fff;
-    margin-left:-1rem;
-  }
+  
 }
 </style>

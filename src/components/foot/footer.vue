@@ -2,12 +2,12 @@
 	<div id="footer">
     <div class="foot-content">
       <p>
-        <span @click="$router.push('/')">T &amp; C</span>
-        <span @click="$router.push('/')">Privacy</span>
-        <span @click="$router.push('/')">About Us</span>
-        <span @click="$router.push('/')">Contact Us</span>
+        <span @click="footClick(0)">昨天</span>
+        <span @click="footClick(1)">今天</span>
+        <span @click="footClick(2)">明天</span>
+        <span @click="footClick(3)">现在</span>
       </p>
-      <p>2018-2019© szjSmiling.com. All Rights Reserved</p>
+      <p><a href="https://github.com/szjSmiling">豫ICP备18009561号: 本网站是个人网站，主要用于记录生活趣事.</a></p>
     </div>
 	</div>
 </template>
@@ -17,31 +17,38 @@ export default {
     return {
       
     }
+  },
+  methods:{
+    footClick(type){
+      
+    }
   }
 };
 </script>
 <style lang="less" scoped>
 #footer {
     width: 100%;
-    height:80px;
+    min-width: 400px;
     display: table;
-    position: fixed;
-    bottom: 0;
-    background-color: #0b9d78;
+    font-size: 12px;
+    padding:20px 0 10px;
   .foot-content{
     display: table-cell;
     vertical-align: middle;
     p {
-      font-size: 0.8rem;
-      color: #fff;
-      margin: 0.2rem 0;
+      color: #999;
+      margin: 10px 0;
       span {
-        border-right: 1px solid #fff;
+        border-right: 1px solid #999;
         display: inline-block;
-        padding: 0 0.2rem;
+        padding: 0 5px;
+        cursor: pointer;
       }
       span:nth-child(4) {
         border-right: none;
+      }
+      a{
+        color:#999;
       }
     }
   }

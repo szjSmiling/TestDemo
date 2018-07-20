@@ -75,4 +75,26 @@ select {
   border: none;
   border-radius: 4px;
 }
+.el-collapse{
+  border:1px solid #eee;
+  .el-collapse-item{
+    .el-collapse-item__header{
+      height: 35px;
+      line-height: 35px;
+      i{line-height: 35px;}
+    }
+    .el-collapse-item__header.is-active{
+      color:#409EFF;
+    }
+    .el-collapse-item__header:hover{
+      color:#409EFF;
+    }
+    .el-collapse-item__wrap{
+      .el-collapse-item__content{
+        text-align: left;
+        padding:0 14px 14px;
+      } 
+    }
+  }
+}
 </style>
