@@ -15,6 +15,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import App from './App';
 import router from './router';
 import { store } from "./vuex";
+import axios from "axios";
 import resource from "vue-resource";// 可以使用$http
 import { AxiosConfig } from "./models/utils/AxiosConfig";
 import './assets/iconfont/iconfont.css';//引入字体图标
@@ -90,6 +91,7 @@ Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 Vue.use(resource);
+Vue.prototype.$axios = axios;
 Vue.config.productionTip = false
 AxiosConfig.init();
 

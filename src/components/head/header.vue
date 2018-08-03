@@ -23,11 +23,11 @@
 	</div>
 </template>
 <script>
-let audio = document.createElement('audio');
-audio.src = "http://sc1.111ttt.cn/2016/1/11/11/204111410014.mp3";
-audio.addEventListener("canplaythrough", function () {
-  audio.play();
-}, false);
+// let audio = document.createElement('audio');
+// audio.src = "http://sc1.111ttt.cn/2016/1/11/11/204111410014.mp3";
+// audio.addEventListener("canplaythrough", function () {
+  // audio.play();
+// }, false);
 export default {
   data() {
     return {
@@ -40,7 +40,7 @@ export default {
     playOrPause(){
       this.music = !this.music;
       if(!this.music){
-        audio.pause();
+        // audio.pause();
       }
     }
   }

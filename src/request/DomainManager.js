@@ -21,7 +21,7 @@ DomainManager.getSearchOrderResultPageUrl = function(orderId){
 DomainManager.getSearchOrderResultUrl = function(orderId){
     return window.location.protocol + "//" + window.location.host + "/search?";
 }
-DomainManager.getQueryString = function(parmsMap){
+DomainManager.getQueryString = function(parmsMap){//获取ajax请求get方式传参的参数,并用 & 连接,拼接好
   let strBuffer = "";
     let isFirst = true;
     parmsMap.forEach((value, key, map) => {

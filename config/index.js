@@ -10,11 +10,22 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
-
+    // proxyTable: {},
+    proxy: {
+      "/heg_api": {
+        target: "http://192.168.1.23",
+        changeOrigin: true,
+        secure: false
+      },
+      "/heg_log": {
+        target: "http://192.168.1.23",
+        changeOrigin: true,
+        secure: false
+      }
+    },
     // Various Dev Server settings
-    host: '192.168.1.37', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    host: 'app.happyeasygo.com', // can be overwritten by process.env.HOST
+    port: 8089, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

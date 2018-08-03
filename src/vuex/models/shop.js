@@ -1,12 +1,12 @@
-import * as types from '../../types/types.js'
-export const Discount = {
+import * as types from '../type/type.js';
+export const XShop = {
 	state:{
 		coupon:null,
 		silver:null,
 		gold:null
 	},
-	getters:{
-		coupon:state=>state.coupon,
+	getters:{// es6 函数如果是这样,则默认是return state.coupon
+    coupon:state=>state.coupon,
 		silver:state=>state.silver,
 		gold:state=>state.gold
 	},
