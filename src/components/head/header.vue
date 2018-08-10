@@ -1,11 +1,13 @@
 <template>
 	<div id="header">
+    <a id="logo" @click="$router.push('/')"><img :src='require("../../assets/images/logo.jpg")' alt=""></a>
+    <a class="bg-music-icon" v-if="music"><i class="iconfont" :class='{"icon-pause":music}' @click="playOrPause"></i></a>
+    <a class="bg-music-icon" v-else><i class="iconfont" :class='{"icon-play":!music}' @click="playOrPause"></i></a>
 		<el-menu :default-active="activeIndex" class="el-menu-demo flex content-center" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="0"><a id="logo" href="www.szjSmiling.com"><img :src='require("../../assets/images/logo.jpg")' alt=""></a></el-menu-item>
-      <el-menu-item index="1">处理中心</el-menu-item>
-      <el-menu-item index="2">消息中心</el-menu-item>
-      <el-menu-item index="3"><a href="javascript:;" target="_blank">订单管理</a></el-menu-item>
-      <el-submenu index="4">
+      <el-menu-item index="0" @click="$router.push('/')">处理中心</el-menu-item>
+      <el-menu-item index="1" @click="$router.push('/')">消息中心</el-menu-item>
+      <el-menu-item index="2" @click="$router.push('/')">订单管理</el-menu-item>
+      <el-submenu index="3">
         <template slot="title">我的工作台</template>
         <el-menu-item index="2-1">选项1</el-menu-item>
         <el-menu-item index="2-2">选项2</el-menu-item>
@@ -17,8 +19,6 @@
           <el-menu-item index="2-4-3">选项3</el-menu-item>
         </el-submenu> -->
       </el-submenu>
-      <el-menu-item index="5" v-if="music"><i class="bg-music-icon iconfont"  :class='{"icon-pause":music}' @click="playOrPause"></i></el-menu-item>
-      <el-menu-item index="5" v-else><i class="bg-music-icon iconfont"  :class='{"icon-play":!music}' @click="playOrPause"></i></el-menu-item>
     </el-menu>
 	</div>
 </template>
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       music:true,
-      activeIndex: '1',
+      activeIndex: '0',
     };
   },
   methods: {
@@ -48,13 +48,13 @@ export default {
 </script>
 <style lang='less' scoped>
 #header {
-  min-width: 600px;
+  min-width: 1020px;
+  max-width:1400px;
   #logo{
     width:60px;
     display:inline-block;
-    float: left;
     position: absolute;
-    left:-55px;
+    left:20%;
     z-index: 20;
     img{
       width:100%;
@@ -70,14 +70,17 @@ export default {
     .is-active{
       color:#409EFF;
     }
-    li:first-child,li:last-child{cursor:default;border:0;i{color:#409EFF;}}
   }
   .bg-music-icon{
     position: absolute;
-    right:-50px;
+    height: 60px;
+    line-height:60px;
+    right: 15%;
     z-index: 20;
-    font-size: 25px;
     cursor: pointer;
+    .iconfont{
+      font-size: 25px;
+    }
   }
   
 }

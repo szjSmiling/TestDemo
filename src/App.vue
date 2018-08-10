@@ -43,15 +43,28 @@ export default {
   font-family: "WebRupee";
   src: url("./assets/font/WebRupee.V2.0.ttf");
 }
-#app > div {
-  height: 100%;
+#app{
+  max-width:1400px;
+  margin:auto;
+}
+#app > div{height: 100%;}  
+a{cursor: pointer;}
+.content{
+  background: #eee; 
+  display:flex;
+  .child-con{
+    padding: 0 10px;
+    width: 700px;
+    min-width: 600px;
+    margin:20px auto 20px;
+    border:1px solid #eee;
+  }
 }
 .button{
   cursor: pointer;
   color:#fff;
   background: #409EFF;
   border-radius:3px;
-  // border:1px solid #eee;
   padding:5px 10px;
 }
 .rs {
@@ -74,6 +87,9 @@ input,
 select {
   border: none;
   border-radius: 4px;
+}
+.el-popper[x-placement^=bottom]{
+  margin-top: 5px;
 }
 .el-collapse{
   border:1px solid #eee;

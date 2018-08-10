@@ -5,6 +5,8 @@ import {Indicator} from 'mint-ui';
 const HelloWorld = resolve => require(['@/pages/HelloWorld.vue'],resolve);
 const PDF = resolve => require(['@/pages/showPDF.vue'],resolve);
 
+const shop = resolve => require(['@/pages/shop/shop.vue'],resolve);
+
 Vue.use(Router);
 
 const router =  new Router({
@@ -21,7 +23,11 @@ const router =  new Router({
     {
       path:'/PDF',
       component:PDF
-    }
+    },
+    {
+      path:'/shop',
+      component:shop
+    },
   ]
 });
 router.beforeEach((to, from, next) => {

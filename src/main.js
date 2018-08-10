@@ -12,6 +12,7 @@ import {
   ColorPicker,Container,Header,Aside,Main,Footer,Loading,MessageBox,Message,Notification
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'font-awesome/less/font-awesome.less';
 import App from './App';
 import router from './router';
 import { store } from "./vuex";
