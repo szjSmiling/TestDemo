@@ -2,10 +2,13 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import {Indicator} from 'mint-ui';
 
-const HelloWorld = resolve => require(['@/pages/HelloWorld.vue'],resolve);
-const PDF = resolve => require(['@/pages/showPDF.vue'],resolve);
+const HelloWorld = resolve => require(['@/pages/HelloWorld.vue'], resolve);
+const PDF = resolve => require(['@/pages/showPDF.vue'], resolve);
 
-const shop = resolve => require(['@/pages/shop/shop.vue'],resolve);
+const Shop = resolve => require(['@/pages/shop/shop.vue'], resolve);
+
+const Account = resolve => require(['@/pages/account/index.vue'], resolve);
+const Message = resolve => require(['@/pages/message/message.vue'], resolve);
 
 Vue.use(Router);
 
@@ -22,11 +25,19 @@ const router =  new Router({
     },
     {
       path:'/PDF',
-      component:PDF
+      component: PDF
     },
     {
       path:'/shop',
-      component:shop
+      component:Shop
+    },
+    {
+      path:'/account',
+      component: Account
+    },
+    {
+      path:'/message',
+      component: Message
     },
   ]
 });

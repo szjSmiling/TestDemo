@@ -1,22 +1,26 @@
 <template>
   <div id="shop">
     <!-- <my-frames> -->
-      <form class="public-con" :class="screenWidth - 760 >0?'pc-con':'mobile-con'">
-        <h4>注册</h4>
-        <label for="email">邮箱<br>
-          <input type="text" id="email" v-model="user.email" placeholder="请输入邮箱" >
-        </label>
-        <label for="password">登录密码<br>
-          <input type="password" id="password" v-model="user.password" placeholder="请输入密码">
-        </label>
-        <label for="repassword">确认密码<br>
-          <input type="password" id="repassword" v-model="user.rePassword" placeholder="再次确认密码">
-        </label>
-        <label for="checked" class="register-terms" :class="{'checked-input': user.checked}" >我已阅读并经同意 &lt;&lt;JJLIN用户隐私协议&gt;&gt;
-          <input type="checkbox" name="checked" id="checked" v-model="user.checked">
-        </label>
-        <input type="button" value="注册" @click="startRegister">
-      </form>
+      <el-row>
+        <el-col :sm="24" :md="24" :lg="24">
+          <form class="public-con" :class="screenWidth - 760 >0?'pc-con':'mobile-con'">
+            <h4>注册</h4>
+            <label for="email">邮箱<br>
+              <input type="text" id="email" v-model="user.email" placeholder="请输入邮箱" >
+            </label>
+            <label for="password">登录密码<br>
+              <input type="password" id="password" v-model="user.password" placeholder="请输入密码">
+            </label>
+            <label for="repassword">确认密码<br>
+              <input type="password" id="repassword" v-model="user.rePassword" placeholder="再次确认密码">
+            </label>
+            <label for="checked" class="register-terms" :class="{'checked-input': user.checked}" >我已阅读并经同意 &lt;&lt;JJLIN用户隐私协议&gt;&gt;
+              <input type="checkbox" name="checked" id="checked" v-model="user.checked">
+            </label>
+            <input type="button" value="注册" @click="startRegister">
+          </form>
+        </el-col>
+      </el-row>
     <!-- </my-frames> -->
   </div>
 </template>
@@ -67,12 +71,13 @@ export default {
   height: 100%;
   background: #eee;
   overflow: hidden;
-  position: relative;
+  // position: relative;
   .public-con{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    margin:auto;
     background: #fff;
     border:1px solid #ccc;
     padding:30px 50px;
@@ -81,6 +86,7 @@ export default {
   /* pc css */
   .pc-con{
     width:35%;
+    max-width: 440px;
   }
   /* mobile css */
   .mobile-con{

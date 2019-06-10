@@ -24,7 +24,7 @@ module.exports = {
       }
     },
     // Various Dev Server settings
-    host: 'app.happyeasygo.com', // can be overwritten by process.env.HOST
+    host: '172.16.16.120',
     port: 8089, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

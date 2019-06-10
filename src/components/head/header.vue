@@ -4,8 +4,8 @@
     <a class="bg-music-icon" v-if="music"><i class="iconfont" :class='{"icon-pause":music}' @click="playOrPause"></i></a>
     <a class="bg-music-icon" v-else><i class="iconfont" :class='{"icon-play":!music}' @click="playOrPause"></i></a>
 		<el-menu :default-active="activeIndex" class="el-menu-demo flex content-center" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="0" @click="$router.push('/')">处理中心</el-menu-item>
-      <el-menu-item index="1" @click="$router.push('/')">消息中心</el-menu-item>
+      <el-menu-item index="0" @click="$router.push('/')">首页</el-menu-item>
+      <el-menu-item index="1" @click="$router.push('/message')">消息中心</el-menu-item>
       <el-menu-item index="2" @click="$router.push('/')">订单管理</el-menu-item>
       <el-submenu index="3">
         <template slot="title">我的工作台</template>

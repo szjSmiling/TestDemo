@@ -13,7 +13,7 @@
         <ul class="btnGroup flex space-between align-items-center">
           <li class="section1">
             <el-select class="select-left" v-model="value6" placeholder="请选择" @change="selectVal">
-              <el-option v-for="item in cities" :key="item.value" :label="item.label" :value="item.value">
+              <el-option v-for="item in cities" :key="item.value" :label="item.label" :value="item.label">
                 <span style="float: left">{{ item.label }}</span>
                 <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
               </el-option>
@@ -137,9 +137,19 @@ export default {
       sessionStorage.setItem("textArray",JSON.stringify(this.textList));
     },
     selectVal(){
-      this.textList.push(this.value6);
-      this.typeIndex =  Math.floor(Math.random()*4);
-      sessionStorage.setItem("textArray",JSON.stringify(this.textList));
+      console.log(this.value6)
+      this.$alert('选择您喜欢的城市', this.value6, {
+        confirmButtonText: '确定',
+        callback: action => {
+          this.$message({
+            type: 'success ',
+            message: `action: 希望在${this.value6} 定居!`
+          });
+        }
+      });
+      // this.textList.push(this.value6);
+      // this.typeIndex =  Math.floor(Math.random()*4);
+      // sessionStorage.setItem("textArray",JSON.stringify(this.textList));
     },
     remoteMethod(query) {
       if (query !== '') {
