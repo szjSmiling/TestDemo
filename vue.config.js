@@ -32,12 +32,12 @@ module.exports = {
     host: proxyHandler().localHost,
     port: proxyHandler().localPort,
     https: false,
-    hotOnly: false,
+    hot: true, // 启动 HMR 热更新, 某些模块无法热更新时, 刷新页面
+    hotOnly: false, // 某些模块无法热更新时, 不刷新页面, 控制台输出报错
     proxy: proxyHandler().proxy
   },
   // 调整内部的 webpack 配置
   configureWebpack: config => {
-    console.log(config.plugins)
     const newResolve = {
       extensions: ["css", ".js", ".vue", ".less", ".json"], //文件优先解析后缀名顺序
       alias: {
@@ -48,19 +48,19 @@ module.exports = {
         "@utils": resolve("./src/utils"),
       }
     }
-    const plugins = [
-      {
-        'HtmlWebpackPlugin': {
-  
-        }
-      }
-    ]
     if (process.env.NODE_ENV === 'production') {
       // 生产环境配置
     } else {
       // 开发环境配置
     }
     Object.assign(config, {
+      // externals: {
+      //   vue: 'Vue',
+      //   vuex: 'Vuex',
+      //   'vue-router': 'VueRouter',
+      //   axios: 'axios',
+      //   vant: 'vant'
+      // },
       resolve: newResolve,
     })
   },
@@ -70,7 +70,25 @@ module.exports = {
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
   },
   // 第三方插件配置
-  pluginOptions: {}
+  pluginOptions: {},
+  css: { /* px to rem(这里可以配置, 也可以在package.json中配置) */
+    // loaderOptions: {
+    //   postcss: {
+    //     plugins: [
+    //       require('postcss-pxtorem')({
+    //         rootValue: 36,
+    //         unitPrecision: 2,
+    //         minPixelValue: 11,
+    //         propList: ["*"],
+    //         selectorBlackList: [ // 忽略转换的匹配
+    //           ".ignore"
+    //         ],
+    //         exclude: /node_modules|.gitignore/i
+    //       })
+    //     ]
+    //   }
+    // }
+  },
 }
 function addStyleResource (rule) {
   rule.use('style-resource')

@@ -1,13 +1,17 @@
 import Vue from 'vue'
-
+import '@utils/flexible.js';
 import router from './router.js'
 import App from './App.vue'
-import { Button } from 'vant'
-Vue.use(Button)
+
 Vue.config.productionTip = false
-new Vue({
+const newVue = new Vue({
   // store,
   router,
-  render: h => h(App),
+  render: h => h(App)
 })
-.$mount('#app')
+setTimeout(() => {
+  // 清楚白屏时 loading 的计时器
+  clearInterval(window.run)
+  newVue.$mount('#app')
+}, 2000)
+

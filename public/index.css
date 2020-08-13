@@ -1,0 +1,63 @@
+
+@keyframes loader13-1 {
+	0% {-webkit-transform: rotate(270deg);}
+	50% {-webkit-transform: rotate(360deg);}
+	100% {-webkit-transform: rotate(270deg);}
+}
+@-webkit-keyframes loader13-1 {
+	0% {-webkit-transform: rotate(270deg);}
+	50% {-webkit-transform: rotate(360deg);}
+	100% {-webkit-transform: rotate(270deg);}
+}
+@keyframes loader13-2 {
+	0% {-webkit-transform: rotate(90deg);}
+	50% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(90deg);}
+}
+@-webkit-keyframes loader13-2 {
+	0% {-webkit-transform: rotate(90deg);}
+	50% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(90deg);}
+}
+
+.loading-wrapper{
+  width: 100%;height: 100%;background: #eee;display: flex; justify-content: center;align-items: center;flex-wrap: wrap;
+  background: radial-gradient(90px at left 90px, #f00 50px, transparent),
+  radial-gradient(50px at center 90px, #efadd0 20px, transparent)
+  #fff;
+}
+.loading-left, .loading-right{width: 50%;height: 30%;display: flex; align-items: center;position: relative;}
+
+.loading-left span{width: 0px;height: 0px;border: 25px solid #eee;border-right: 25px solid transparent;border-radius: 50%;position: absolute;right: 0;}
+
+.loading-left span:nth-of-type(1) {
+  animation: loader13-1 0.5s 0s infinite linear;
+	-webkit-animation: loader13-1 0.5s 0s infinite linear;
+}
+.loading-left span:nth-of-type(2) {
+  animation: loader13-2 0.5s 0s infinite linear;
+	-webkit-animation: loader13-2 0.5s 0s infinite linear;
+}
+
+.loading-right span {display: inline-block;width: 10px;height: 10px;border-radius: 50%;background: #eee;opacity: 0.7;position: absolute;left: 0;}
+
+@keyframes loader13-3 {
+	0% {left: -10px;}
+	100% {left: 50px;}
+}
+@-webkit-keyframes loader13-3 {
+	0% {left: -10px;}
+	100% {left: 50px;}
+}
+.loading-right span:nth-child(1) {
+  animation: loader13-3 1s -1s linear infinite;
+	-webkit-animation: loader13-3 1s -1s linear infinite;
+}
+.loading-right span:nth-child(2) {
+  animation: loader13-3 1s -.5s linear infinite;
+	-webkit-animation: loader13-3 1s -.5s linear infinite;
+}
+.loading-right span:nth-child(3) {
+  animation: loader13-3 1s 0s linear infinite;
+	-webkit-animation: loader13-3 1s 0s linear infinite;
+}

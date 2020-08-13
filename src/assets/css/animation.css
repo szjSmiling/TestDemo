@@ -1,0 +1,94 @@
+
+/* 弹窗的背景层 */
+.indicator-mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* 透明背景0.5 */
+.fadeOutP5 {
+  animation: fadeOutP5 0.5s ease-in-out;
+}
+@keyframes fadeOutP5 {
+  from { background: rgba(0, 0, 0, 0.5);}
+  to { background: rgba(0, 0, 0, 0);}
+}
+.fadeInP5 {
+  animation: fadeInP5 0.5s ease-in-out;
+}
+@keyframes fadeInP5 {
+  from { background: rgba(0, 0, 0, 0);}
+  to { background: rgba(0, 0, 0, 0.5);}
+}
+/* 从底部隐藏, 定位居中 */
+.slideToBottomCenter{
+  animation: slideToBottomCenter 0.5s ease-in-out;
+}
+@keyframes slideToBottomCenter {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 100%, 0);
+  }
+}
+/* 从底部出来, 定位居中 */
+.slideFromBottomCenter{
+  animation: slideFromBottomCenter 0.5s ease-in-out;
+}
+@keyframes slideFromBottomCenter {
+  from {
+    transform: translate3d(-50%, 100%, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+/* 从底部隐藏, 定位居中 */
+.slideToBottom{
+  animation: slideToBottom 0.5s ease-in-out;
+}
+@keyframes slideToBottom {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+/* 从底部出来, 定位居中 */
+.slideFromBottom{
+  animation: slideFromBottom 0.5s ease-in-out;
+}
+@keyframes slideFromBottom {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* vue transition */
+.fade-enter-active, .fade-leave-active  {
+  transition: opacity 0.4s ease-in;
+}
+.fade-enter, .fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.slideFromBottomVue-enter-active, .slideFromBottomVue-leave-active  {
+  transition: all .4s ease;
+}
+.slideFromBottomVue-enter, .slideFromBottomVue-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateY(100%);
+}

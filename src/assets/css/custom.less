@@ -1,0 +1,26 @@
+/* custom native input[type=radio] style */
+.custom-radio{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #bcc4cc;
+  cursor: pointer;
+  &::after{
+    display: inline-block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: transparent;
+  }
+}
+
+.custom-radio.active{
+  border-color: #017959;
+  &::after{
+    background: #017959;
+  }
+}
