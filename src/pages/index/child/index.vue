@@ -3,7 +3,7 @@
     <img class="iw-logo" :src="require('@assets/images/logo.png')" alt="vant" >
     <h5 class="iw-title">{{msg}}</h5>
     <div>
-      <van-button type="default">默认按钮</van-button>
+      <van-button type="default" url="/scroll">默认按钮</van-button>
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
     }
   },
   methods: {
-    
+
   }
 }
 </script>

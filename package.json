@@ -48,7 +48,7 @@
       "postcss-pxtorem": {
         "rootValue": 36,
         "unitPrecision": 2,
-        "minPixelValue": 11,
+        "minPixelValue": 10,
         "propList": ["*"],
         "selectorBlackList": [
           ".ignore-"

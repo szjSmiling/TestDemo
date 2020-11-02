@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import '@utils/flexible.js';
 import router from './router.js'
 import App from './App.vue'
 

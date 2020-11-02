@@ -1,8 +1,11 @@
 const path = require('path')
+const glob = require("glob");
 
 const resolve = function (dir) {
   return path.join(__dirname, dir)
 }
+
+const isProduction = process.env.NODE_ENV === "production";
 
 function proxyHandler () {
   // localHost 可选值 'localhost'  ||  '127.0.0.1'  ||  '0.0.0.0'( 本机ip)
@@ -18,8 +21,19 @@ function proxyHandler () {
       secure: false
     }
   }
-  return { localHost, localPort, proxy: proxy }
+  return { localHost, localPort, proxy: { ...proxy } }
 }
+
+// 配置多页面
+const pages = {};
+glob.sync('./src/pages/**/main.js').forEach(path => {
+  const entryKey = path.split('./src/pages/')[1].split('/')[0];
+  pages[entryKey] = {
+    entry: path,
+    template: './public/index.html',
+    filename:  process.env.NODE_ENV === 'production' ? resolve(`dist/${entryKey}.html`) : `${entryKey}.html`
+  }
+})
 
 module.exports = {
   publicPath: '/',// 根路经  './'相对路径
@@ -28,6 +42,7 @@ module.exports = {
   lintOnSave: true,// 是否开启eslint保存监测，有效值：true  ||  false  ||  'error'
   runtimeCompiler: false,// use the full build with in-browser compiler?
   productionSourceMap: false, // 打包不生成 js.map 文件
+  pages,
   devServer: {
     host: proxyHandler().localHost,
     port: proxyHandler().localPort,
@@ -41,11 +56,11 @@ module.exports = {
     const newResolve = {
       extensions: ["css", ".js", ".vue", ".less", ".json"], //文件优先解析后缀名顺序
       alias: {
-        "@": resolve("./src"),
-        "@assets": resolve("./src/assets"),
-        "@components": resolve("./src/components"),
-        "@pages": resolve("./src/pages"),
-        "@utils": resolve("./src/utils"),
+        "@": resolve("src"),
+        "@assets": resolve("src/assets"),
+        "@components": resolve("src/components"),
+        "@pages": resolve("src/pages"),
+        "@utils": resolve("src/utils"),
       }
     }
     if (process.env.NODE_ENV === 'production') {
@@ -66,6 +81,7 @@ module.exports = {
   },
   // 修改 Loader 选项
   chainWebpack: config => {
+    // 引入 less 全局变量
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
   },
@@ -78,7 +94,7 @@ module.exports = {
     //       require('postcss-pxtorem')({
     //         rootValue: 36,
     //         unitPrecision: 2,
-    //         minPixelValue: 11,
+    //         minPixelValue: 10,
     //         propList: ["*"],
     //         selectorBlackList: [ // 忽略转换的匹配
     //           ".ignore"
