@@ -36,11 +36,11 @@ glob.sync('./src/pages/**/main.js').forEach(path => {
 })
 
 module.exports = {
-  publicPath: '/',// 根路经  './'相对路径
-  outputDir: 'dist',// 构建输出目录
-  assetsDir: 'assets',// 静态资源目录（js,css,img,fonts）
-  lintOnSave: true,// 是否开启eslint保存监测，有效值：true  ||  false  ||  'error'
-  runtimeCompiler: false,// use the full build with in-browser compiler?
+  publicPath: '/', // 根路经  './'相对路径
+  outputDir: 'dist', // 构建输出目录
+  assetsDir: 'assets', // 静态资源目录（js,css,img,fonts）
+  lintOnSave: true, // 是否开启eslint保存监测，有效值：true  ||  false  ||  'error'
+  runtimeCompiler: false, // use the full build with in-browser compiler?
   productionSourceMap: false, // 打包不生成 js.map 文件
   pages,
   devServer: {
