@@ -46,6 +46,7 @@ module.exports = {
   devServer: {
     host: proxyHandler().localHost,
     port: proxyHandler().localPort,
+    open: true,
     https: false,
     hot: true, // 启动 HMR 热更新, 某些模块无法热更新时, 刷新页面
     hotOnly: false, // 某些模块无法热更新时, 不刷新页面, 控制台输出报错
