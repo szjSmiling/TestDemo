@@ -2,7 +2,7 @@
  * @Author: sunzhongjie
  * @Date: 2020-11-04 16:58:47
  * @LastEditors: Jelly
- * @LastEditTime: 2020-12-18 15:34:43
+ * @LastEditTime: 2020-12-18 14:23:04
  */
 import Vue from 'vue';
 import router from './router.js';
@@ -10,8 +10,6 @@ import App from './App.vue';
 import InitMainEntry from '@config/initialvue.js';
 
 InitMainEntry(Vue);
-
-
 const newVue = new Vue({
   // store,
   router,
@@ -21,4 +19,5 @@ setTimeout(() => {
   // 清楚白屏时 loading 的计时器
   clearInterval(window.run)
   newVue.$mount('#app')
-}, 500)
+}, 100)
+

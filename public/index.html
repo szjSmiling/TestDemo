@@ -1,15 +1,27 @@
+<!--
+ * @Author: sunzhongjie
+ * @Date: 2020-11-04 16:58:47
+ * @LastEditors: Jelly
+ * @LastEditTime: 2020-12-18 16:03:43
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
-    <van-number-keyboard safe-area-inset-bottom />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta name="keywords" content="">
+    <meta name="robots" content="INDEX, FOLLOW">
+    <link rel="canonical" href="http://www.szjsmiling.com/">
     <!-- <link rel="stylesheet" href="./index.css"> -->
   </head>
-  <body>
+  <body style="margin:0;">
+    <van-number-keyboard safe-area-inset-bottom />
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
@@ -18,11 +30,13 @@
       <div class="loading-left"><span></span><span></span></div>
       <div class="loading-right"><span></span><span></span><span></span></div>
     </div> -->
-    <!-- 首屏 canvas -->
     <div id="app">
-      <canvas id="loading" style="width:100%;height:100%;"></canvas>
+      <!-- 首屏 canvas -->
+      <canvas id="loading" style="width:100vw;height:100vh;vertical-align:top;"></canvas>
     </div>
-    <script type="text/javascript" src="./index.js"></script>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_696827_ttd7uyezv3.css">
+    <!-- 首屏 canvas js 未压缩版 -> index.js -->
+    <script type="text/javascript">var canvas=document.getElementById("loading");var ctx=canvas.getContext("2d");ctx.width=document.body.clientWidth;ctx.height=document.body.clientHeight;var W=320,H=160,angle=0,len=10,count=50;ctx.strokeStyle="rgba(255, 255, 255, 0.2)";var run=setInterval(draw,100);var imging=new Image();imging.src="2.jpg";function draw(){ctx.clearRect(0,0,W,H);ctx.drawImage(imging,0,0,W,H);for(var i=1;i<=count;i++){xiayu(Math.random()*W,Math.random()*H,angle)}}function xiayu(x,y,r){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+angle,y+len);ctx.lineWidth=2;ctx.stroke()};</script>
+    <script></script>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_696827_ttd7uyezv3.css" >
   </body>
 </html>

@@ -1,9 +1,14 @@
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
+`使用vant开发的基于vue2.0的移动端多页面项目架构`
+```js
+1. clone 项目
+2. yarn 安装依赖
+3. yarn serve
+```
+### 准备服务端渲染(SSR)
 ### Webfunny 前端项目 js 异常捕捉
 See [Webfunny](https://github.com/a597873885/webfunny_monitor/blob/master/DES.md)
-```
+```js
 第一步、下载(clone)最新部署包，初始化
   1. git clone https://github.com/a597873885/webfunny_monitor.git
   2. npm run init
@@ -17,28 +22,4 @@ See [Webfunny](https://github.com/a597873885/webfunny_monitor/blob/master/DES.md
   5. use mysql
   5. net stop mysql
 ```
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
+### 配置

@@ -2,13 +2,15 @@
   "name": "vue-vant-mobile",
   "version": "0.1.0",
   "private": true,
+  "description": "使用vant开发的基于vue2.0的移动端多页面项目架构",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --report",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "lodash": "^4.17.20",
     "vant": "^2.9.4",
     "vue": "^2.6.11",
     "vue-router": "^3.4.1",
@@ -47,9 +49,11 @@
     "plugins": {
       "postcss-pxtorem": {
         "rootValue": 36,
-        "unitPrecision": 2,
+        "unitPrecision": 5,
         "minPixelValue": 10,
-        "propList": ["*"],
+        "propList": [
+          "*"
+        ],
         "selectorBlackList": [
           ".ignore-"
         ],

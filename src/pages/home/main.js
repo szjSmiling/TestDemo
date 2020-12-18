@@ -2,7 +2,7 @@
  * @Author: sunzhongjie
  * @Date: 2020-11-04 16:58:47
  * @LastEditors: Jelly
- * @LastEditTime: 2020-12-18 15:34:43
+ * @LastEditTime: 2020-12-18 15:34:50
  */
 import Vue from 'vue';
 import router from './router.js';
@@ -10,7 +10,6 @@ import App from './App.vue';
 import InitMainEntry from '@config/initialvue.js';
 
 InitMainEntry(Vue);
-
 
 const newVue = new Vue({
   // store,
@@ -22,3 +21,4 @@ setTimeout(() => {
   clearInterval(window.run)
   newVue.$mount('#app')
 }, 500)
+

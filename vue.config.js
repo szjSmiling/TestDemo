@@ -25,25 +25,36 @@ function proxyHandler () {
 }
 
 // 配置多页面
-const pages = {};
-glob.sync('./src/pages/**/main.js').forEach(path => {
-  const entryKey = path.split('./src/pages/')[1].split('/')[0];
-  pages[entryKey] = {
-    entry: path,
-    template: './public/index.html',
-    filename:  process.env.NODE_ENV === 'production' ? resolve(`dist/${entryKey}.html`) : `${entryKey}.html`
-  }
-})
+function getEntry(globPath) {
+  let entries = {},
+      entryKey,
+      dirList;
+  glob.sync(globPath).forEach(entry => {
+    // 获取后缀 path.extname(entry) 的文件名
+    // const basename = path.basename(entry, path.extname(entry));
+    dirList = entry.split('/').splice(-3); // ['pages', 'home', 'main'], temp[1] === entryKey
+    entryKey = entry.split('./src/pages/')[1].split('/')[0];
+    entries[entryKey] = {
+      entry: entry,
+      template: './public/index.html',
+      title: `${dirList[1]}`,
+      filename:  isProduction ? resolve(`dist/${entryKey}.html`) : `${entryKey}.html`,
+      chunks: ['chunk-vendors', 'chunk-common', entryKey]
+    }
+  })
+  return entries;
+}
+let pages = getEntry('./src/pages/**/main.js');
 
 module.exports = {
-  publicPath: '/', // 根路经  './'相对路径
-  outputDir: 'dist', // 构建输出目录
-  assetsDir: 'assets', // 静态资源目录（js,css,img,fonts）
-  lintOnSave: true, // 是否开启eslint保存监测，有效值：true  ||  false  ||  'error'
-  runtimeCompiler: false, // use the full build with in-browser compiler?
-  productionSourceMap: false, // 打包不生成 js.map 文件
+  publicPath: isProduction ? '/' : '/', // 根路经  './'相对路径
+  outputDir: 'dist',   // 构建输出目录
+  // assetsDir: 'assets', // 静态资源目录（js,css,img,fonts）
+  lintOnSave: true,    // 是否开启eslint保存监测，有效值：true  ||  false  ||  'error'
+  productionSourceMap: false, // 打包不生成 js.map 文件, 加快生产环境的打包速度，也能避免源码暴露在浏览器端
   pages,
   devServer: {
+    index: 'home.html',
     host: proxyHandler().localHost,
     port: proxyHandler().localPort,
     open: true,
@@ -60,6 +71,7 @@ module.exports = {
         "@": resolve("src"),
         "@assets": resolve("src/assets"),
         "@components": resolve("src/components"),
+        "@config": resolve("src/config"),
         "@pages": resolve("src/pages"),
         "@utils": resolve("src/utils"),
       }
@@ -82,6 +94,25 @@ module.exports = {
   },
   // 修改 Loader 选项
   chainWebpack: config => {
+    // config.module.rule('images')
+    //   .use('url-loader')
+    //   .loader('url-loader')
+    //   .tap(options => {
+    //     // 修改它的选项
+    //     options.limit = 100;
+    //     return options;
+    //   })
+    // 移除prefetch
+    Object.keys(pages).forEach(entryName => {
+      // config.plugins.delete(`prefetch-${entryName}`);
+      // config.plugins.delete(`prefetch`);
+    })
+    if(isProduction) {
+      // config.plugin('extract-css').tap(() => [{
+      //   path: resolve("./dist/css"),
+      //   fileName: "[name][contenthash:8].css"
+      // }])
+    }
     // 引入 less 全局变量
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))

@@ -1,12 +1,16 @@
+<!--
+ * @Author: sunzhongjie
+ * @Date: 2020-12-11 11:07:10
+ * @LastEditors: Jelly
+ * @LastEditTime: 2020-12-11 11:30:45
+-->
 <template>
   <transition name="fade">
     <div id="app" v-if="showPage">
-      <szj-header :title="'header'" />
       <keep-alive v-if="$route.meta.keepAlive">
         <router-view></router-view>
       </keep-alive>
       <router-view v-else></router-view>
-      <szj-footer :title="'scroll-title'" />
     </div>
   </transition>
 </template>
