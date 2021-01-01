@@ -25,7 +25,7 @@ header{
   background: #fff;
 }
 footer{
-  padding: 24px 0;
+  height: 60px;
   color: #fff;
   background: #071938;
   position: relative;
@@ -36,6 +36,7 @@ footer{
   margin: 0 auto;
   min-height: calc(100vh - 60px);
   padding: 60px 12px 0;
+  position: relative;
 }
 /* 适配多种屏幕 */
 /* @media screen and (min-width:35.5em) {

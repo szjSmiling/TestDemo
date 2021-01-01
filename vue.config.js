@@ -7,7 +7,7 @@ const resolve = function (dir) {
 
 const isProduction = process.env.NODE_ENV === "production";
 
-function proxyHandler () {
+function proxy () {
   // localHost 可选值 'localhost'  ||  '127.0.0.1'  ||  '0.0.0.0'( 本机ip)
   const localHost = '0.0.0.0';
   const localPort = '8080';
@@ -25,6 +25,7 @@ function proxyHandler () {
 }
 
 // 配置多页面
+let pages = getEntry('./src/pages/**/main.js');
 function getEntry(globPath) {
   let entries = {},
       entryKey,
@@ -44,24 +45,22 @@ function getEntry(globPath) {
   })
   return entries;
 }
-let pages = getEntry('./src/pages/**/main.js');
-
 module.exports = {
   publicPath: isProduction ? '/' : '/', // 根路经  './'相对路径
-  outputDir: 'dist',   // 构建输出目录
-  // assetsDir: 'assets', // 静态资源目录（js,css,img,fonts）
+  outputDir: './dist',   // 构建输出目录
+  assetsDir: 'assets', // 静态资源目录（js,css,img,fonts）
   lintOnSave: true,    // 是否开启eslint保存监测，有效值：true  ||  false  ||  'error'
   productionSourceMap: false, // 打包不生成 js.map 文件, 加快生产环境的打包速度，也能避免源码暴露在浏览器端
-  pages,
+  pages, // 多页面需要
   devServer: {
-    index: 'home.html',
-    host: proxyHandler().localHost,
-    port: proxyHandler().localPort,
+    index: 'home.html', // 指定页面入口, 多页面且首页不是index.html时需要
+    host: proxy().localHost,
+    port: proxy().localPort,
     open: true,
     https: false,
     hot: true, // 启动 HMR 热更新, 某些模块无法热更新时, 刷新页面
     hotOnly: false, // 某些模块无法热更新时, 不刷新页面, 控制台输出报错
-    proxy: proxyHandler().proxy
+    proxy: proxy().proxy
   },
   // 调整内部的 webpack 配置
   configureWebpack: config => {
@@ -76,20 +75,8 @@ module.exports = {
         "@utils": resolve("src/utils"),
       }
     }
-    if (process.env.NODE_ENV === 'production') {
-      // 生产环境配置
-    } else {
-      // 开发环境配置
-    }
     Object.assign(config, {
-      // externals: {
-      //   vue: 'Vue',
-      //   vuex: 'Vuex',
-      //   'vue-router': 'VueRouter',
-      //   axios: 'axios',
-      //   vant: 'vant'
-      // },
-      resolve: newResolve,
+      resolve: newResolve
     })
   },
   // 修改 Loader 选项

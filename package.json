@@ -5,8 +5,8 @@
   "description": "使用vant开发的基于vue2.0的移动端多页面项目架构",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --report",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build": "vue-cli-service build --report"
   },
   "dependencies": {
     "core-js": "^3.6.5",
