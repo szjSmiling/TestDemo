@@ -1,3 +1,9 @@
+<!--
+ * @Author: sunzhongjie
+ * @Date: 2020-11-04 16:58:47
+ * @LastEditors: Jelly
+ * @LastEditTime: 2021-01-20 13:49:41
+-->
 <template>
   <transition name="fade">
     <div id="app" v-if="showPage">
@@ -19,10 +25,9 @@ export default {
     }
   },
   created () {
-    const timer = setTimeout(() => {
+    this._SDelay(() => {
       this.showPage = true;
-      clearTimeout(timer)
-    }, 10);
+    }, 1)
   }
 }
 </script>

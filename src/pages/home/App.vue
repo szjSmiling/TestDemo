@@ -2,7 +2,7 @@
  * @Author: sunzhongjie
  * @Date: 2020-11-04 16:58:47
  * @LastEditors: Jelly
- * @LastEditTime: 2020-12-18 17:51:21
+ * @LastEditTime: 2021-01-20 13:46:11
 -->
 <template>
   <transition name="fade">
@@ -25,10 +25,9 @@ export default {
     }
   },
   created () {
-    const timer = setTimeout(() => {
+    this._SDelay(() => {
       this.showPage = true;
-      clearTimeout(timer)
-    }, 10);
+    }, 1)
   }
 }
 </script>
