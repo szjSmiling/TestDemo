@@ -2,12 +2,12 @@
  * @Author: sunzhongjie
  * @Date: 2020-11-04 16:58:47
  * @LastEditors: Jelly
- * @LastEditTime: 2021-04-09 16:28:00
+ * @LastEditTime: 2021-04-12 10:26:34
 -->
 <template>
   <transition name="fade">
     <div id="app" v-if="showPage">
-      <szj-header />
+      <szj-header :title="'Lottery trend chart'" />
       <keep-alive v-if="$route.meta.keepAlive">
         <router-view></router-view>
       </keep-alive>

@@ -2,23 +2,23 @@
  * @Author: sunzhongjie
  * @Date: 2020-11-04 16:58:47
  * @LastEditors: Jelly
- * @LastEditTime: 2021-04-09 16:28:00
+ * @LastEditTime: 2021-03-09 09:56:26
 -->
 <template>
   <transition name="fade">
     <div id="app" v-if="showPage">
-      <szj-header />
+      <szj-header :title="'auth-header'" />
       <keep-alive v-if="$route.meta.keepAlive">
         <router-view></router-view>
       </keep-alive>
       <router-view v-else></router-view>
-      <szj-footer />
+      <szj-footer :title="'auth-footer'" />
     </div>
   </transition>
 </template>
 <script>
 export default {
-  name: 'App',
+  name: 'third-auth',
   data () {
     return {
       showPage: false

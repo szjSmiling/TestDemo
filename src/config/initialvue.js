@@ -2,9 +2,9 @@
  * @Author: sunzhongjie
  * @Date: 2020-12-18 14:17:20
  * @LastEditors: Jelly
- * @LastEditTime: 2021-01-20 13:50:14
+ * @LastEditTime: 2021-04-09 15:06:15
  */
-import '@utils/flexible.js'; // 仅限于移动端项目使用, 配合postcss-pxtorem
+import '@utils/Flexible.js'; // 仅限于移动端项目使用, 配合postcss-pxtorem
 // 属性
 import _SScroll from '@/utils/ScrollPenetrate';
 import _SDelay from '@/utils/DelayLoad';
@@ -14,8 +14,8 @@ import Header from '@components/Header.vue';
 import Footer from '@components/Footer.vue';
 
 let components = {
-  'szj-header': Header,
-  'szj-footer': Footer,
+  'SzjHeader': Header,
+  'SzjFooter': Footer,
 }
 /**example->
  * filters:{ 'DateFormat': function(){} }
