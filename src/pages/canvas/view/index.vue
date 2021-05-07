@@ -2,37 +2,38 @@
  * @Author: sunzhongjie
  * @Date: 2020-11-04 16:58:47
  * @LastEditors: Jelly
- * @LastEditTime: 2021-04-12 14:51:55
+ * @LastEditTime: 2021-04-14 18:11:48
 -->
 <template>
   <div class="container">
-    <table id="thead" border="0">
-      <thead id="lottery-head">
-        <tr>
-          <th class="thead-th"
-            v-for="head of thead"
-            :key="head.id">{{head.text}}</th>
-        </tr>
-      </thead>
-      <tbody id="lottery-body"></tbody>
-    </table>
+    <van-tabs v-model="active" swipeable>
+      <van-tab title="Path2D">
+        <Path2D />
+      </van-tab>
+      <van-tab title="K线图">
+        <DrawStockChart />
+      </van-tab>
+      <van-tab title="彩票图">
+        <LotteryTrendChart />
+      </van-tab>
+    </van-tabs>
   </div>
 </template>
 <script>
+import { Button, Tab, Tabs } from 'vant';
 export default {
+  components: {
+    [Button.name]: Button,
+    [Tab.name]: Tab,
+    [Tabs.name]: Tabs,
+    Path2D: () => import('./Path2D.vue'),
+    DrawStockChart: () => import('./DrawStockChart.vue'),
+    LotteryTrendChart: () => import('./LotteryTrendChart.vue'),
+  },
   data() {
     return {
-      thead: [],
-      tbody: []
+      active: 0
     }
-  },
-  created() {
-    for(let i = 1; i <= 15; i++) {
-      this.thead.push({ id: i, text: `H${i}` })
-    }
-  },
-  mounted() {
-    
   },
   methods: {
     
@@ -40,26 +41,17 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-#thead{
-  width: 100%;
-  margin-top: 10px;
-}
-thead{
-  width: 100%;
-  td, th{
-    border: 1px solid #d8d8d8;
+.container /deep/ .van-tabs {
+  .van-tabs__wrap{
+    border-bottom: 1px solid #ddd;
   }
-  tr{
-    width: 100%;
-    display: flex;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+  .van-tabs__line{
+    background: #1989fa;
   }
-  .thead-th{
-    display: block;
-    width: 60px;
-    height: 25px;
-    line-height: 25px;
+  .van-tabs__content{
+    h2{
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

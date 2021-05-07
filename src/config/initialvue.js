@@ -2,9 +2,9 @@
  * @Author: sunzhongjie
  * @Date: 2020-12-18 14:17:20
  * @LastEditors: Jelly
- * @LastEditTime: 2021-04-09 15:06:15
+ * @LastEditTime: 2021-04-13 14:11:44
  */
-import '@utils/Flexible.js'; // 仅限于移动端项目使用, 配合postcss-pxtorem
+import '@/utils/FlexibleFont.js'; // 仅限于移动端项目使用, 配合postcss-pxtorem
 // 属性
 import _SScroll from '@/utils/ScrollPenetrate';
 import _SDelay from '@/utils/DelayLoad';
