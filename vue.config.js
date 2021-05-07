@@ -72,7 +72,7 @@ module.exports = {
          * 但即使使用运行时构建，在单文件组件中也依然可以写模板，因为单文件组件的模板会在构建时预编译为 render 函数。
          * 上面一段是官方api中的解释。就是说，如果我们想使用template，我们不能直接在客户端使用npm install之后的vue
         */
-         "vue": "vue/dist/vue.js",
+        "vue": "vue/dist/vue.js",
         "@": resolve("src"),
         "@assets": resolve("src/assets"),
         "@components": resolve("src/components"),
