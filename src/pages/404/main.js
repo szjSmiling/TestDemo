@@ -7,7 +7,7 @@
 import Vue from 'vue';
 import router from './router.js';
 import App from './App.vue';
-import InitMainEntry from '@config/initialvue.js';
+import InitMainEntry from '@/plugins/initialvue.js';
 
 InitMainEntry(Vue);
 const newVue = new Vue({

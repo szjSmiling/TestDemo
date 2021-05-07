@@ -4,7 +4,7 @@
  * @LastEditors: Jelly
  * @LastEditTime: 2021-04-09 15:06:15
  */
-import '@utils/Flexible.js'; // 仅限于移动端项目使用, 配合postcss-pxtorem
+import '@/utils/Flexible.js'; // 仅限于移动端项目使用, 配合postcss-pxtorem
 // 属性
 import _SScroll from '@/utils/ScrollPenetrate';
 import _SDelay from '@/utils/DelayLoad';
