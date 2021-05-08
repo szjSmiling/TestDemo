@@ -30,6 +30,7 @@
     </div>
     <div class="content clear">
       <h4>功能组件</h4>
+      <van-button type="default" url="/function">功能入口</van-button>
       <van-button type="default" @click="clickEvent">防抖节流</van-button>
     </div>
     <div class="content clear">
