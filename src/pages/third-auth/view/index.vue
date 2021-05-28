@@ -6,7 +6,7 @@
 -->
 <template>
   <div class="container">
-    <!-- <img class="iw-logo" :src="require('@assets/images/logo.png')" alt="vant" > -->
+    <img class="iw-logo" :src="require('@assets/images/logo.png')" alt="vant" >
     <div class="">
       <van-button id="signin-google-button">google sign in</van-button>
       <van-button id="signin-fb-button">facebook sign in</van-button>
