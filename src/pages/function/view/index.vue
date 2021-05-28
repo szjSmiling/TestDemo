@@ -16,15 +16,6 @@
               <div class="slot__item_content">{{slot.items[prize]}}</div>
             </div>
           </template>
-          <!-- <div class="slot__item slot__item--copy">
-            <div class="slot__item_content">{{slot.items[0]}}</div>
-          </div>
-          <div class="slot__item slot__item--copy">
-            <div class="slot__item_content">{{slot.items[1]}}</div>
-          </div>
-          <div class="slot__item slot__item--copy">
-            <div class="slot__item_content">{{slot.items[2]}}</div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -42,7 +33,7 @@ export default {
       slots: [
         {
           title: "When",
-          items: ["today", "next week", "last year", "tomorrow", "yesterday"],
+          items: ["today", "next week", "last year", "tomorrow", "yesterday", "next year"],
         },
         {
           title: "Where",
@@ -59,21 +50,30 @@ export default {
         },
         { title: "How", items: ["cycling", "walking", "swimming", "flying", "running", "climbing"] },
       ],
-      prizeNum: 5, // 可视区域展示的奖品数
+      prizeNum: 3, // 可视区域每列展示的奖品数
       opts: null,
       startedAt: null,
+      requestId: null
     };
   },
   methods: {
     start: function () {
       if (this.opts) {
-        return;
+        // 增加动画过程中再次点击，直接抽奖结束，滚到对应中奖位置
+        window.cancelAnimationFrame(this.requestId)
+        this.requestId = null
+        this.opts.forEach(opt => {
+          opt.isFinished = true
+          const pos = -opt.finalPos
+          opt.el.style.transform = "translateY(" + pos + "px)"
+        })
+        return
       }
       this.opts = this.slots.map((data, i) => {
         const slot = this.$refs.slots[i]; // map(function(){})利用map便利slots的每一个选项组,最终得到return的返回值
         const itemHeight = document.getElementsByClassName('slot__item')[0].offsetHeight
         const choice = Math.floor(Math.random() * data.items.length); // 随机生成一个[0, data.items.length]的整数(floor向下取整)
-        console.log("choice", i, data.items[choice])
+        console.log("choice", i, choice, data.items[choice])
         const opts = {
           el: slot.querySelector(".slot__wrap"), //指向奖项元素的父级
           finalPos: choice * itemHeight, // itemHeight 为每一个奖品滚动标签的高度
@@ -84,9 +84,10 @@ export default {
         }
         return opts
       })
-      next(this.animate); // 开启动画
+      this.requestId = next(this.animate)
     },
     animate: function (timestamp) {
+      // if(!this.opts) return
       // timestamp 当前的方法持续的毫秒数
       if (this.startedAt == null) {
         this.startedAt = timestamp // 动画初始时间
@@ -112,7 +113,7 @@ export default {
           // console.log('finished', opt, pos, opt.finalPost)
           opt.isFinished = true
         }
-      });
+      })
       if (this.opts.every((o) => o.isFinished)) {
         this.opts = null;
         this.startedAt = null;
